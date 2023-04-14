@@ -19,8 +19,9 @@ class Cat < ApplicationRecord
     end
 
     def age
-        ((Date.today - birth_date)/365.0)
+        ((Date.today - birth_date)/365.0).floor
     end
+
 
 
 end
