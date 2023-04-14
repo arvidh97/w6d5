@@ -13,8 +13,14 @@ class Cat < ApplicationRecord
     validate :birth_date_cannot_be_future
 
     def birth_date_cannot_be_future 
-        if birth_date > Date.now 
-            raise "Cannot be the future"
+        if birth_date > Date.today
+            errors.add(:birth_date, "Birthday cannot be in future")
         end
     end
+
+    def age
+        ((Date.today - birth_date)/365.0)
+    end
+
+
 end
